@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background"
+    tools:context=".activity.LoginActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent_80"
+        android:gravity="center_horizontal">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="30dp">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/logo" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/app_name"
+                android:textColor="@android:color/white"
+                android:textSize="30dp" />
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/invalid_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:textSize="12dp"
+                android:paddingTop="5dp"
+                android:text="usenemw invalide"
+                android:textColor="@color/red"
+                android:visibility="gone" />
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_login"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/login_butt_height"
+                android:layout_margin="10dp"
+                android:background="@drawable/edit_text_shape"
+                android:fontFamily="@font/rial_bold"
+                android:gravity="center_vertical"
+                android:hint="@string/user_name"
+                android:padding="12dp"
+                android:textColor="@android:color/white"
+                android:textColorHint="@color/grey"
+                android:textSize="18dp" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/login_butt_height"
+                android:layout_margin="10dp"
+                android:background="@drawable/edit_text_shape"
+                android:fontFamily="@font/rial_bold"
+                android:gravity="center_vertical"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:padding="12dp"
+                android:textColor="@android:color/white"
+                android:textColorHint="@color/grey"
+                android:textSize="18dp" />
+
+            <LinearLayout
+                android:id="@+id/layout_sing_in"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="10dp">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="180dp"
+                    android:layout_height="@dimen/login_butt_height"
+                    android:background="@drawable/sing_in_shape"
+                    android:gravity="center"
+                    android:text="@string/sing_in"
+                    android:textSize="20dp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>
