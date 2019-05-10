@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".done.DoneActivity"></activity>
+        <activity android:name=".activity.SettingsActivity"></activity>
+        <activity android:name=".done.DoneActivity" />
         <activity android:name=".activity.SingleTaskActivity" />
         <activity android:name=".activity.LoginActivity" /> <!-- <activity android:name=".activity.SplashActivity"> -->
         <activity android:name=".activity.MainActivity">

@@ -1,4 +1,4 @@
-package com.android.tvnet.adapters;
+package com.android.tvnet.done.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

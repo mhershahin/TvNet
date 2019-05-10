@@ -1,21 +1,28 @@
 package com.android.tvnet.activity;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatTextView;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.android.tvnet.R;
 import com.android.tvnet.models.Task;
+import com.android.tvnet.util.PhoneUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.android.tvnet.key.ConsKey.TASK_DATA;
 
-public class SingleTaskActivity extends AppCompatActivity implements View.OnClickListener {
+public class SingleTaskActivity extends AppCompatActivity implements View.OnClickListener, ActivityCompat.OnRequestPermissionsResultCallback {
 
 
     @BindView(R.id.single_back)
@@ -51,7 +58,7 @@ public class SingleTaskActivity extends AppCompatActivity implements View.OnClic
         if (task != null) {
             initUI();
         }
-        
+
         back.setOnClickListener(this);
         phoneNumber.setOnClickListener(this);
 
@@ -80,8 +87,40 @@ public class SingleTaskActivity extends AppCompatActivity implements View.OnClic
                 onBackPressed();
                 break;
             case R.id.single_phone_number:
-
+                callPermissions();
                 break;
+        }
+    }
+    static final int REQUEST_CALL = 1;
+
+    private void callPermissions() {
+        boolean hasPermissionCall = (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED);
+
+        if (!hasPermissionCall) {
+            requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+        } else {
+            phoneCall();
+        }
+
+    }
+
+    private void phoneCall() {
+        PhoneUtil.getInstance().phoneCall(this,task.getCustomer().getPhoneNumber());
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        Log.e("PermissionCall", "PermissionCall");
+
+        if (requestCode == REQUEST_CALL) {
+            if (grantResults.length != 1 || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+              Log.e("Permishon","Don't open call Permissions");
+            } else {
+               phoneCall();
+
+
+            }
         }
     }
 

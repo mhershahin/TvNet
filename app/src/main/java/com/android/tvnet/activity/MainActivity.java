@@ -18,6 +18,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.TypefaceSpan;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.Menu;
@@ -27,7 +28,8 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 
 import com.android.tvnet.R;
-import com.android.tvnet.adapters.TaskAdapter;
+import com.android.tvnet.done.adapter.TaskAdapter;
+import com.android.tvnet.done.DoneActivity;
 import com.android.tvnet.listeners.IReloadListener;
 import com.android.tvnet.listeners.ITaskListener;
 import com.android.tvnet.models.Customer;
@@ -215,24 +217,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
+        switch (item.getItemId()) {
+            case R.id.nav_item_done:
+                openDoneActivit();
+                break;
+            case R.id.nav_item_settings:
+                openSettingsActivity();
+                break;
+            case R.id.nav_item_logout:
+                //ToDo Log Out
+                break;
 
-//        if (id == R.id.nav_camera) {
-//            // Handle the camera action
-//        } else if (id == R.id.nav_gallery) {
-//
-//        } else if (id == R.id.nav_slideshow) {
-//
-//        } else if (id == R.id.nav_manage) {
-//
-//        } else if (id == R.id.nav_share) {
-//
-//        } else if (id == R.id.nav_send) {
-//
-//        }
+            case R.id.action_near_by_me:
+                Log.e("near", "near by me");
+                break;
+        }
+
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void openSettingsActivity() {
+        Intent intent= new Intent(MainActivity.this, SettingsActivity.class);
+        startActivity(intent);
+    }
+
+    private void openDoneActivit() {
+        Intent intent= new Intent(MainActivity.this, DoneActivity.class);
+        startActivity(intent);
     }
 
     @Override
