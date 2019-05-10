@@ -7,6 +7,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
@@ -65,4 +66,10 @@ public class PhoneUtil {
         activity.startActivity(refresh);
         activity.finish();
     }
+    public void phoneCall(Activity activity,String number){
+        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
+        activity.startActivity(intent);
+
+    }
+
 }
